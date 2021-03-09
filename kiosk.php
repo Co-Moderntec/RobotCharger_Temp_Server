@@ -57,7 +57,7 @@ $s_cmd = 0;
 
 $result = $dbconn->query("INSERT INTO h_kiosk (cid, c_stat, c_cnt, c_park_ty, car_num) VALUES ('$cid', '$c_stat', '$c_cnt', '$c_park_ty', '$car_num')");
 if (!$result) die(socket_display_error("06", "Internal error X2"));
-$result = $dbconn->query("SELECT s_cmd FROM h_application WHERE ORDER BY `No` DESC LIMIT 1");
+$result = $dbconn->query("SELECT u_cmd FROM h_application ORDER BY `No` DESC LIMIT 1");
 if (!$result) die(socket_display_error("06", "Internal error X3"));
 $result_object = $result->fetch_object();
 

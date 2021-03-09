@@ -57,9 +57,9 @@ $c_park_ty = 0;
 $car_num = "";
 
 $result = $dbconn->query("INSERT INTO h_application (u_cmd) VALUES ('$u_cmd')");
-if (!$result) die(socket_display_error("06", "Internal error X3"));
-$result = $dbconn->query("SELECT * FROM h_kiosk WHERE ORDER BY `No` DESC LIMIT 1");
 if (!$result) die(socket_display_error("06", "Internal error X4"));
+$result = $dbconn->query("SELECT * FROM h_kiosk WHERE ORDER BY `No` DESC LIMIT 1");
+if (!$result) die(socket_display_error("06", "Internal error X5"));
 $result_object = $result->fetch_object();
 
 $list = array(
