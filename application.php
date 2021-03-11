@@ -1,5 +1,4 @@
 <?php
-
 function socket_display_error($error_code, $error_message)
 {
     $list = array("error_code" => $error_code, "error_message" => $error_message);
@@ -32,6 +31,8 @@ if (!isset($data["cid"]) && !isset($data["u_cmd"])) {
     exit;
 }
 
+// error_reporting(E_ALL);
+// ini_set('display_errors', '1');
 require_once "Database.php";
 $dbconn = mysqli_connect(
     $GLOBALS['db_host'],

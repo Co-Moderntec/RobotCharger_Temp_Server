@@ -32,6 +32,8 @@ if (!isset($data["seq"]) && !isset($data["cid"]) && !isset($data["c_stat"])
   exit;
 }
 
+// error_reporting(E_ALL);
+// ini_set('display_errors', '1');
 require_once "Database.php";
 $dbconn = mysqli_connect(
   $GLOBALS['db_host'],
@@ -47,7 +49,7 @@ if (isset($_SERVER['HTTP_USER_AGENT'])) {
 } else {
   $agent = "NULL";
 }
-$seq = $data["seq"];
+//$seq = $data["seq"];
 $cid = $data["cid"];
 $c_stat = $data["c_stat"];
 $c_cnt = $data["c_cnt"];
@@ -62,6 +64,6 @@ if (!$result) die(socket_display_error("06", "Internal error X3"));
 $result_object = $result->fetch_object();
 
 $list = array(
-  "seq" => $seq, "cid" => $cid, "s_cmd" => $result_object->s_cmd
+  "seq" => 0, "cid" => $cid, "s_cmd" => $result_object->u_cmd
 );
 die (json_encode($list));
