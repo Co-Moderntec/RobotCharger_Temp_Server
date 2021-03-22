@@ -27,7 +27,10 @@ if (strlen($json_params) > 0 && isValidJSON($json_params)) {
 }
 
 if (!isset($data["seq"]) && !isset($data["cid"]) && !isset($data["c_stat"])
-    && !isset($data["c_cnt"]) && !isset($data["c_park_ty"]) && !isset($data["car_num"])) {
+    && !isset($data["c_cnt"]) && !isset($data["c_park_ty"]) && !isset($data["car_num"])
+    && !isset($data["c_voltage"]) && !isset($data["c_ampare"]) && !isset($data["c_kwh"])
+    && !isset($data["c_kwh"]) && !isset($data["c_soc"]) && !isset($data["c_stt"])
+    && !isset($data["c_ret"])) {
   socket_display_error("09", "There is a parameter that was not passed.");
   exit;
 }
@@ -55,9 +58,16 @@ $c_stat = $data["c_stat"];
 $c_cnt = $data["c_cnt"];
 $c_park_ty = $data["c_park_ty"];
 $car_num = $data["car_num"];
+$c_voltage = $data["c_voltage"];
+$c_ampare = $data["c_ampare"];
+$c_kwh = $data["c_kwh"];
+$c_soc = $data["c_soc"];
+$c_stt = $data["c_stt"];
+$c_ret = $data["c_ret"];
 $s_cmd = 0;
 
-$result = $dbconn->query("INSERT INTO h_kiosk (cid, c_stat, c_cnt, c_park_ty, car_num) VALUES ('$cid', '$c_stat', '$c_cnt', '$c_park_ty', '$car_num')");
+$result = $dbconn->query("INSERT INTO h_kiosk (cid, c_stat, c_cnt, c_park_ty, car_num, c_voltage, c_ampare, c_kwh, c_soc, c_stt, c_ret) VALUES 
+                                              ('$cid', '$c_stat', '$c_cnt', '$c_park_ty', '$car_num', '$c_voltage', '$c_ampare', '$c_kwh', '$c_soc', '$c_stt', '$c_ret')");
 if (!$result) die(socket_display_error("06", "Internal error X2"));
 $result = $dbconn->query("SELECT u_cmd FROM h_application ORDER BY `No` DESC LIMIT 1");
 if (!$result) die(socket_display_error("06", "Internal error X3"));
