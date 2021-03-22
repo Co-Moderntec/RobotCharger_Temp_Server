@@ -64,7 +64,9 @@ if (!$result) die(socket_display_error("06", "Internal error X5"));
 $result_object = $result->fetch_object();
 
 $list = array(
-  "cid" => $cid, "s_stat" => $result_object->c_stat, "c_cnt" => $result_object->c_cnt, "c_park_ty" => $result_object->c_park_ty, "car_num" => $result_object->car_num
+  "cid" => $cid, "s_stat" => $result_object->c_stat, "c_cnt" => $result_object->c_cnt, "c_park_ty" => $result_object->c_park_ty, "car_num" => $result_object->car_num,
+  "c_voltage" => $result_object->c_voltage, "c_ampare" => $result_object->c_ampare, "c_kwh" => $result_object->c_kwh, "c_soc" => $result_object->c_soc,
+  "c_stt" => $result_object->c_stt, "c_ret" => $result_object->c_ret
 );
 
 die(json_encode($list));
